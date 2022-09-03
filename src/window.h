@@ -1,6 +1,8 @@
 #pragma once
 
-#include <gtkmm.h>
+#include <gtkmm/window.h>
+
+class ClockWidgetBase;
 
 class Window : public Gtk::Window
 {
@@ -9,4 +11,5 @@ public:
     ~Window();
 
 private:
+    ClockWidgetBase *mClockWidget;
 };

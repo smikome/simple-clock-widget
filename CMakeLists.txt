@@ -14,9 +14,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCE_FILES
-    src/simple_clock_widget.cpp
+    src/main.cpp
     src/window.cpp
     src/clock.cpp
+    src/clockwidgetbase.cpp
+    src/labelclockwidget.cpp
 )
 
 add_executable(simpleclockwidget ${SOURCE_FILES})
