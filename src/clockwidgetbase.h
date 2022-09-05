@@ -1,10 +1,10 @@
 #pragma once
 
-#include <gtkmm/frame.h>
+#include <gtkmm/bin.h>
 
 class Clock;
 
-class ClockWidgetBase : public Gtk::Frame
+class ClockWidgetBase : public Gtk::Bin
 {
 public:
     ClockWidgetBase();

@@ -6,11 +6,19 @@
 LabelClockWidget::LabelClockWidget()
 :mLabel(new Gtk::Label())
 {
-    int margin = 50;
+    int margin = 0;
     mLabel->set_margin_left(margin);
     mLabel->set_margin_right(margin);
     mLabel->set_margin_top(margin);
     mLabel->set_margin_bottom(margin);
+    
+    Gdk::RGBA blackColor;
+    blackColor.set_rgba(0.0f, 0.0f, 0.0f);
+    for(int i = 0; i <= 12; i++)
+    {
+        // always black
+        mLabel->override_color(blackColor, (Gtk::StateFlags)(1 << i));
+    }
 
     add(*mLabel);
     mLabel->show();

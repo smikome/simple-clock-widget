@@ -1,8 +1,8 @@
 #include "clock.h"
 
-// #include <chrono>
 #include <ctime>
 #include <iostream>
+#include <iomanip>
 
 Clock::Clock()
 {
@@ -30,4 +30,34 @@ void Clock::Dump()
     std::cout << "CurrentDate: " 
         << mYear << "/" << mMon << "/" << mDay << " "
         << mHour << ":" << mMin << ":" << mSec << std::endl;
+}
+
+Glib::ustring Clock::Year() const
+{
+    return Glib::ustring::format(std::setfill(L'0'), std::setw(4), mYear);
+}
+
+Glib::ustring Clock::Mon() const
+{
+    return Glib::ustring::format(std::setfill(L'0'), std::setw(2), mMon);
+}
+
+Glib::ustring Clock::Day() const
+{
+    return Glib::ustring::format(std::setfill(L'0'), std::setw(2), mDay);
+}
+
+Glib::ustring Clock::Hour() const
+{
+    return Glib::ustring::format(std::setfill(L'0'), std::setw(2), mHour);
+}
+
+Glib::ustring Clock::Min() const
+{
+    return Glib::ustring::format(std::setfill(L'0'), std::setw(2), mMin);
+}
+
+Glib::ustring Clock::Sec() const
+{
+    return Glib::ustring::format(std::setfill(L'0'), std::setw(2), mSec);
 }

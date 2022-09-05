@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glibmm/ustring.h>
+
 class Clock
 {
 public:
@@ -8,12 +10,19 @@ public:
     void Update();
     void Dump();
 
-    int Year() const { return mYear; }
-    int Mon() const { return mMon; }
-    int Day() const { return mDay; }
-    int Hour() const { return mHour; }
-    int Min() const { return mMin; }
-    int Sec() const { return mSec; }
+    Glib::ustring Year() const;
+    Glib::ustring Mon() const;
+    Glib::ustring Day() const;
+    Glib::ustring Hour() const;
+    Glib::ustring Min() const;
+    Glib::ustring Sec() const;
+
+    // int YearInt() const { return mYear; }
+    // int MonInt() const { return mMon; }
+    // int DayInt() const { return mDay; }
+    // int HourInt() const { return mHour; }
+    // int MinInt() const { return mMin; }
+    // int SecInt() const { return mSec; }
 
 private:
     int mYear;
