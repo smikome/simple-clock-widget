@@ -6,17 +6,18 @@
 LabelClockWidget::LabelClockWidget()
 :mLabel(new Gtk::Label())
 {
-    int margin = 0;
-    mLabel->set_margin_left(margin);
-    mLabel->set_margin_right(margin);
-    mLabel->set_margin_top(margin);
-    mLabel->set_margin_bottom(margin);
+    int verticalMargin = 5;
+    int horizontalMargin = 10;
+    mLabel->set_margin_left(horizontalMargin);
+    mLabel->set_margin_right(horizontalMargin);
+    mLabel->set_margin_top(verticalMargin);
+    mLabel->set_margin_bottom(verticalMargin);
     
     Gdk::RGBA blackColor;
-    blackColor.set_rgba(0.0f, 0.0f, 0.0f);
+    blackColor.set_rgba(1.0f, 1.0f, 1.0f);
     for(int i = 0; i <= 12; i++)
     {
-        // always black
+        // always color
         mLabel->override_color(blackColor, (Gtk::StateFlags)(1 << i));
     }
 
@@ -36,9 +37,9 @@ LabelClockWidget::~LabelClockWidget()
 void LabelClockWidget::UpdateWidget(const Clock &clock)
 {
     double fontSize = 50.0;
-    Glib::ustring bgColor = "#E0FFFF";
+    Glib::ustring bgColor = "#E0FFFF00";
 
-    mLabel->set_text(Glib::ustring::compose("<span size='%1pt' bgcolor='%2'>%3-%4-%5 %6:%7:%8</span>",
-        fontSize, bgColor, clock.Year(), clock.Mon(), clock.Day(), clock.Hour(), clock.Min(), clock.Sec()));
+    mLabel->set_text(Glib::ustring::compose("<span size='%1pt'>%2-%3-%4 %5:%6:%7</span>",
+        fontSize, clock.Year(), clock.Mon(), clock.Day(), clock.Hour(), clock.Min(), clock.Sec()));
     mLabel->set_use_markup(true);
 }

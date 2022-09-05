@@ -81,10 +81,32 @@ bool Window::OnMotionNotify(GdkEventMotion *eventMotion)
 
 bool Window::OnDraw(const Cairo::RefPtr<Cairo::Context> &cr)
 {
-    cr->set_source_rgba(1.0, 1.0, 1.0, 0.0);
-    cr->set_operator(Cairo::Operator::OPERATOR_SOURCE);
-    cr->paint();
-    cr->set_operator(Cairo::Operator::OPERATOR_OVER);
+    Gtk::Allocation allocation = get_allocation();
+    const int width = allocation.get_width();
+    const int height = allocation.get_height();
+
+
+    cr->save();
+
+    cr->set_line_width(1.0);
+    cr->save();
+    cr->rectangle(0.0, 0.0, width, height);
+    cr->save();
+    cr->set_source_rgba(0.1, 0.1, 0.1, 1.0);
+    cr->fill_preserve();
+    cr->restore();
+    cr->set_source_rgba(1.0, 1.0, 1.0, 1.0);
+    cr->stroke();
+    cr->restore();
+
+    double margin = 5.0;
+    cr->rectangle(margin, margin, width - (margin * 2), height - (margin * 2));
+    cr->save();
+    cr->set_source_rgba(1.0, 1.0, 1.0, 1.0);
+    cr->stroke();
+    cr->restore();
+
+    cr->restore();
 
     return on_draw(cr);
 }
